@@ -19,6 +19,7 @@ This project is a search application built using React, Tailwind CSS, and Materi
 
 Project Overview
 >> Layout:
+
     Top Section:
 
     An input field for entering search queries.
