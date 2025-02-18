@@ -44,7 +44,6 @@ export default function SearchPage() {
 			setTotalPages(data.pagination?.totalPages || 1);
 		} catch (error) {
 			setError("Error fetching results. Please try again.");
-			console.error("Error fetching results:", error);
 		}
 		finally{
 			setLoading(false);
@@ -120,28 +119,28 @@ export default function SearchPage() {
 
 			<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
 				{results.map((product) => (
-				<Card key={product.id} className="p-4 border rounded-lg shadow-md">
-					<img
-						src={product.thumbnailImageUrl}
-						alt={product.name}
-						className="w-full h-48 object-cover"
-					/>
-					<CardContent>
-						<Typography variant="h6" component="h3" className="mt-2">
-							{product.name}
-						</Typography>
-						<Typography className="text-gray-700">
-							<span className="text-green-600 font-semibold">
-								${product.price}
-							</span>
-							{product.msrp && product.msrp > product.price && (
-								<span className="text-red-500 line-through ml-2">
-									${product.msrp}
+					<Card key={product.id} className="p-4 border rounded-lg shadow-md">
+						<img
+							src={product.thumbnailImageUrl}
+							alt={product.name}
+							className="w-full h-48 object-cover"
+						/>
+						<CardContent>
+							<Typography variant="h6" component="h3" className="mt-2">
+								{product.name}
+							</Typography>
+							<Typography className="text-gray-700">
+								<span className="text-green-600 font-semibold">
+									${product.price}
 								</span>
-							)}
-						</Typography>
-					</CardContent>
-				</Card>
+								{product.msrp && product.msrp > product.price && (
+									<span className="text-red-500 line-through ml-2">
+										${product.msrp}
+									</span>
+								)}
+							</Typography>
+						</CardContent>
+					</Card>
 				))}
 			</div>
 
